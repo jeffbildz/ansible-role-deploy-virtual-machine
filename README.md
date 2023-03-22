@@ -7,26 +7,21 @@ This role deploys a KVM image to a VM host
 ## Role Variables
 
 ```yml
----
-# defaults file for ansible-role-common
+base_image_name: Fedora-Cloud-Base-34-1.2.x86_64.qcow2
+base_image_url: https://download.fedoraproject.org/pub/fedora/linux/releases/34/Cloud/x86_64/images/{{ base_image_name }}
+base_image_sha: b9b621b26725ba95442d9a56cbaa054784e0779a9522ec6eafff07c6e6f717ea
 
-# Variables for Configurations
-common_dns_suffixes: "lemus.int,bilder.int"
+libvirt_pool_dir: "/var/lib/libvirt/images"
 
-common_hostname: "{{ ansible_hostname }}"
-common_time_zone: Central Standard Time
+vm_name: f34-dev
+vm_vcpus: 2
+vm_ram_mb: 2048
+vm_net: default
+vm_root_pass: test123
 
-common_7zip_status: present
-common_7zip_version: 22.1
+cleanup_tmp: no
 
-common_npp_status: present
-common_npp_version: 8.4.4
-
-common_powershell_core_status: present
-common_powershell_core_version: 7.2.5
-
-common_sysinternals_status: latest
-common_sysinternals_version:
+ssh_key: /root/.ssh/id_rsa.pub
 ```
 
 ## Dependencies
